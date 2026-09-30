@@ -32,7 +32,7 @@ The Haunted Harvest is a responsive, three-chapter Halloween environment created
 ## Planned public URLs
 
 - GitHub repository: https://github.com/ChNirupam/haunted-harvest
-- CODD deployment: https://codd.cs.gsu.edu/~nchitturi1/haunted-harvest/
+- CODD deployment: https://codd.cs.gsu.edu/~nchitturi1/inc06/
 
 ## Files
 
