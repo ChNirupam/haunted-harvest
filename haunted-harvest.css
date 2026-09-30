@@ -1,0 +1,297 @@
+/*
+  The Haunted Harvest
+  Author: Nirupamarayudu Chitturi
+  Panther ID: 002931435
+  Technology: HTML5 + CSS3 only (NO JavaScript)
+*/
+
+:root {
+  --pumpkin: #ff7518;
+  --candy-purple: #5a189a;
+  --spider-black: #1a1423;
+  --slime-green: #8ac926;
+  --ghost-white: #f6f2f8;
+  --candle-glow: #ffd60a;
+  --night: #0d0915;
+  --night-2: #181026;
+  --ink-purple: #251638;
+  --muted: #c9bed4;
+  --focus: #ffd60a;
+  --radius: 1.5rem;
+  --shadow: 0 24px 70px rgb(0 0 0 / 35%);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-width: 320px;
+  color: var(--ghost-white);
+  background:
+    radial-gradient(circle at 15% 10%, rgb(90 24 154 / 24%), transparent 34rem),
+    linear-gradient(180deg, #120b1f 0%, #09060f 100%);
+  font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.55;
+}
+
+a { color: inherit; }
+.skip-link {
+  position: fixed;
+  left: 1rem;
+  top: -5rem;
+  z-index: 999;
+  padding: .75rem 1rem;
+  border-radius: .75rem;
+  color: #160c20;
+  background: var(--candle-glow);
+  font-weight: 800;
+  transition: top .2s ease;
+}
+.skip-link:focus { top: 1rem; }
+
+a:focus-visible, [tabindex="0"]:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 4px;
+}
+
+.site-header {
+  width: min(1180px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 1.4rem 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.brand { display: flex; align-items: center; gap: .8rem; }
+.brand-mark { font-size: clamp(2rem, 5vw, 3rem); filter: drop-shadow(0 0 12px rgb(255 117 24 / 50%)); }
+.brand h1 { margin: 0; font-size: clamp(1.45rem, 4vw, 2.35rem); line-height: 1; letter-spacing: .02em; }
+.eyebrow { margin: 0 0 .25rem; color: var(--pumpkin); text-transform: uppercase; letter-spacing: .14em; font-size: .74rem; font-weight: 800; }
+.scene-nav { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: .55rem; }
+.scene-nav a {
+  text-decoration: none;
+  border: 1px solid rgb(246 242 248 / 16%);
+  background: rgb(255 255 255 / 5%);
+  padding: .62rem .9rem;
+  border-radius: 999px;
+  font-weight: 700;
+  transition: transform .2s ease, background .2s ease, border-color .2s ease;
+}
+.scene-nav a:hover { transform: translateY(-2px); background: rgb(255 117 24 / 16%); border-color: rgb(255 117 24 / 55%); }
+
+.scenes { width: min(1180px, calc(100% - 2rem)); margin: 0 auto; }
+.scene {
+  display: none;
+  background: linear-gradient(180deg, rgb(37 22 56 / 82%), rgb(16 10 27 / 94%));
+  border: 1px solid rgb(255 255 255 / 10%);
+  box-shadow: var(--shadow);
+  border-radius: var(--radius);
+  overflow: hidden;
+  animation: scene-enter .55s ease both;
+}
+.scenes:not(:has(.scene:target)) .scene:first-child { display: block; }
+.scene:target { display: block; }
+@keyframes scene-enter { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+.scene-copy { padding: clamp(1.2rem, 3vw, 2.2rem); }
+.chapter { margin: 0 0 .25rem; color: var(--slime-green); text-transform: uppercase; letter-spacing: .17em; font-weight: 900; font-size: .75rem; }
+.scene h2 { margin: .1rem 0 .65rem; font-size: clamp(1.75rem, 5vw, 3rem); line-height: 1.05; }
+.scene-copy > p:not(.chapter) { max-width: 72ch; color: #ded5e6; margin: 0; }
+.legend { display: flex; flex-wrap: wrap; gap: .55rem; margin-top: 1rem; }
+.legend span { padding: .4rem .7rem; background: rgb(255 255 255 / 6%); border: 1px solid rgb(255 255 255 / 10%); border-radius: 999px; font-size: .82rem; }
+
+.stage {
+  position: relative;
+  min-height: clamp(430px, 58vw, 650px);
+  overflow: hidden;
+  isolation: isolate;
+  border-block: 1px solid rgb(255 255 255 / 10%);
+}
+.stage-caption {
+  position: absolute;
+  z-index: 60;
+  left: 50%;
+  bottom: .9rem;
+  transform: translateX(-50%);
+  width: min(92%, 700px);
+  margin: 0;
+  padding: .48rem .7rem;
+  text-align: center;
+  border-radius: 999px;
+  background: rgb(10 6 16 / 64%);
+  backdrop-filter: blur(7px);
+  font-size: .8rem;
+  color: #eee7f4;
+}
+
+/* ---------- Chapter I: Town Square ---------- */
+.town-stage { background: linear-gradient(#130b21 0 55%, #2c1c39 55% 74%, #17101e 74%); }
+.sky-glow { position: absolute; inset: 0 0 45% 0; background: radial-gradient(circle at 82% 16%, rgb(255 214 10 / 14%), transparent 21rem); }
+.moon {
+  position: absolute; z-index: 3; top: 8%; right: 8%; width: clamp(92px, 15vw, 150px); aspect-ratio: 1; border-radius: 50%;
+  background: #ffe5a0; box-shadow: 0 0 35px rgb(255 229 160 / 50%); animation: moon-pulse 5s ease-in-out infinite;
+}
+.moon span { position: absolute; border-radius: 50%; background: rgb(178 141 70 / 20%); }
+.moon span:nth-child(1) { width: 18%; aspect-ratio: 1; left: 28%; top: 38%; }
+.moon span:nth-child(2) { width: 23%; aspect-ratio: 1; right: 20%; top: 29%; }
+.moon span:nth-child(3) { width: 11%; aspect-ratio: 1; right: 31%; bottom: 20%; }
+@keyframes moon-pulse { 50% { box-shadow: 0 0 60px rgb(255 229 160 / 62%); } }
+.cloud { position: absolute; z-index: 4; width: 210px; height: 42px; background: rgb(176 160 194 / 10%); border-radius: 999px; filter: blur(1px); }
+.cloud::before, .cloud::after { content: ""; position: absolute; border-radius: 50%; background: inherit; }
+.cloud::before { width: 80px; height: 80px; left: 36px; bottom: 0; }
+.cloud::after { width: 110px; height: 70px; right: 28px; bottom: 0; }
+.cloud-one { top: 16%; left: -260px; animation: cloud-drift 25s linear infinite; }
+.cloud-two { top: 31%; left: -310px; transform: scale(.7); opacity: .65; animation: cloud-drift 31s 7s linear infinite; }
+@keyframes cloud-drift { to { left: calc(100% + 260px); } }
+.bat { position: absolute; z-index: 8; font-size: clamp(1.4rem, 3vw, 2.3rem); filter: drop-shadow(0 4px 5px #000); }
+.bat-one { top: 20%; left: -10%; animation: bat-flight 9s linear infinite; }
+.bat-two { top: 33%; left: -13%; animation: bat-flight 12s 2.4s linear infinite; }
+@keyframes bat-flight { 0% { transform: translateX(0) translateY(0) rotate(-8deg) scale(.8); } 45% { transform: translateX(62vw) translateY(-55px) rotate(6deg) scale(1.1); } 100% { transform: translateX(125vw) translateY(24px) rotate(-4deg) scale(.9); } }
+.witch { position: absolute; z-index: 7; top: 22%; left: -15%; font-size: clamp(2rem, 5vw, 3.4rem); animation: witch-flight 16s 1s linear infinite; }
+@keyframes witch-flight { to { transform: translateX(130vw) translateY(-34px) rotate(-8deg); } }
+.town-silhouette { position: absolute; z-index: 5; left: 0; right: 0; bottom: 38%; height: 25%; display: flex; align-items: end; gap: 2.6%; padding: 0 3%; background: linear-gradient(transparent 78%, #09060e 78%); }
+.building { flex: 1; background: #0b0711; border-radius: 2px 2px 0 0; box-shadow: inset 0 8px #100a19; }
+.b1{height:55%}.b2{height:78%}.b3{height:49%}.b4{height:88%}.b5{height:37%}.b6{height:68%}
+.haunted-house { position: absolute; z-index: 7; right: 5%; bottom: 38%; width: clamp(150px, 22vw, 245px); height: 31%; background: #08050e; box-shadow: 0 0 50px rgb(255 214 10 / 6%); }
+.haunted-house .roof { position: absolute; left: -8%; top: -28%; width: 116%; height: 34%; background: #09060f; clip-path: polygon(50% 0, 100% 100%, 0 100%); }
+.window { position: absolute; width: 14%; height: 18%; background: var(--candle-glow); box-shadow: 0 0 18px rgb(255 214 10 / 85%); animation: window-flicker 2.3s steps(2,end) infinite; }
+.w1{left:17%;top:25%}.w2{right:17%;top:25%;animation-delay:.8s}.w3{left:43%;top:52%;animation-delay:1.4s}
+.haunted-house .door { position:absolute; left:42%; bottom:0; width:19%; height:27%; background:#170d1f; border:1px solid #2b1837; }
+@keyframes window-flicker { 50% { opacity: .55; filter: brightness(.82); } }
+.lamp { position: absolute; z-index: 17; bottom: 19%; width: 7px; height: 24%; background: #19121f; }
+.lamp::before { content:""; position:absolute; top:-14px; left:50%; width:34px; height:26px; transform:translateX(-50%); border:4px solid #19121f; border-radius:6px 6px 12px 12px; background:rgb(255 214 10 / 15%); box-shadow:0 0 24px rgb(255 214 10 / 22%); }
+.lamp i { position:absolute; top:-7px; left:50%; width:10px; height:10px; transform:translateX(-50%); border-radius:50%; background:var(--candle-glow); box-shadow:0 0 18px var(--candle-glow); animation: lamp-flicker 1.7s ease-in-out infinite; }
+.lamp-left{left:19%}.lamp-right{right:28%}
+@keyframes lamp-flicker { 50% { opacity:.58; transform:translateX(-50%) scale(.85); } }
+.pumpkin { position: absolute; z-index: 30; bottom: 10%; font-size: clamp(2rem, 5vw, 3.5rem); cursor: default; filter: drop-shadow(0 0 9px rgb(255 117 24 / 45%)); animation: pumpkin-glow 2.2s ease-in-out infinite; transition: transform .25s ease, filter .25s ease; }
+.pumpkin:hover { transform: translateY(-8px) scale(1.18) rotate(-5deg); filter: drop-shadow(0 0 20px var(--pumpkin)); }
+.patch-p1{left:5%}.patch-p2{left:11%;bottom:16%;animation-delay:.55s}.patch-p3{right:9%;bottom:12%;animation-delay:1.1s}
+@keyframes pumpkin-glow { 50% { opacity:.74; filter:drop-shadow(0 0 4px rgb(255 117 24 / 30%)); } }
+.walker { position:absolute; z-index:24; bottom:18%; display:flex; align-items:end; gap:.1rem; font-size:clamp(2rem,5vw,3.4rem); }
+.walker .bag { font-size:.55em; animation: bag-swing .55s ease-in-out infinite alternate; transform-origin:top center; }
+.walker-one { left:-15%; animation: town-walk 15s linear infinite; }
+.walker-two { left:-18%; animation: town-walk 18s 4s linear infinite; }
+@keyframes town-walk { to { left:112%; } }
+@keyframes bag-swing { to { transform:rotate(20deg); } }
+.black-cat { position:absolute; z-index:25; bottom:11%; font-size:clamp(1.8rem,4vw,2.7rem); }
+.town-cat { left:-10%; animation: cat-trot 13s 2s linear infinite; }
+@keyframes cat-trot { 0%{left:-10%;transform:translateY(0)} 45%{transform:translateY(-4px)} 100%{left:110%;transform:translateY(0)} }
+.hearse { position:absolute; z-index:26; bottom:8%; left:-22%; display:flex; align-items:center; font-size:clamp(2.8rem,7vw,5rem); animation: hearse-drive 12s 5s linear infinite; }
+.hearse b { font-size:.42em; opacity:.65; animation: exhaust .8s ease-out infinite; }
+@keyframes hearse-drive { 0%,8%{left:-22%} 70%,100%{left:112%} }
+@keyframes exhaust { to { transform:translateX(-25px) scale(1.5); opacity:0; } }
+.candy { position:absolute; z-index:15; top:-12%; font-size:clamp(1rem,3vw,1.8rem); animation:candy-fall 7s linear infinite; }
+.candy-one{left:24%}.candy-two{left:47%;animation-delay:2.2s}.candy-three{left:70%;animation-delay:4.4s}
+@keyframes candy-fall { to { top:77%; transform:translateX(55px) rotate(430deg); } }
+.fog { position:absolute; z-index:35; bottom:0; width:55%; height:25%; border-radius:50%; background:rgb(225 215 235 / 9%); filter:blur(18px); }
+.fog-a{left:-55%;animation:fog-drift 18s linear infinite}.fog-b{left:-62%;bottom:8%;animation:fog-drift 23s 4s linear infinite}.fog-c{left:-70%;bottom:2%;animation:fog-drift 29s 9s linear infinite}
+@keyframes fog-drift { to { left:110%; } }
+
+/* ---------- Chapter II: Graveyard ---------- */
+.grave-stage { background: linear-gradient(#08111d 0 52%, #142033 52% 70%, #0b1119 70%); }
+.grave-moon { position:absolute; z-index:2; width:clamp(100px,16vw,165px); aspect-ratio:1; border-radius:50%; left:10%; top:8%; background:#e7ecdc; box-shadow:0 0 42px rgb(231 236 220 / 34%); }
+.grave-cloud { position:absolute; z-index:3; width:230px; height:50px; border-radius:999px; background:rgb(126 150 165 / 12%); filter:blur(3px); }
+.gc1{top:18%;left:-250px;animation:grave-cloud 28s linear infinite}.gc2{top:32%;left:-330px;animation:grave-cloud 36s 7s linear infinite}
+@keyframes grave-cloud { to { left:110%; } }
+.dead-tree { position:absolute; z-index:8; bottom:27%; width:16px; height:43%; background:#100d12; transform-origin:bottom center; animation:tree-sway 4s ease-in-out infinite alternate; }
+.dead-tree::before,.dead-tree::after,.dead-tree i,.dead-tree b{content:"";position:absolute;height:9px;background:#100d12;border-radius:9px;transform-origin:left center}
+.dead-tree::before{width:95px;top:22%;left:4px;transform:rotate(-36deg)}.dead-tree::after{width:88px;top:38%;left:5px;transform:rotate(29deg)}.dead-tree i{width:72px;top:8%;left:1px;transform:rotate(-70deg)}.dead-tree b{width:62px;top:52%;left:4px;transform:rotate(61deg)}
+.tree-left{left:8%}.tree-right{right:10%;transform:scaleX(-1);animation-delay:1s}
+@keyframes tree-sway { to { rotate:1.8deg; } }
+.owl { position:absolute; z-index:15; top:32%; right:12%; font-size:clamp(1.8rem,4vw,3rem); animation:owl-blink 3s steps(2,end) infinite; }
+@keyframes owl-blink { 50% { filter:brightness(.55); } }
+.fence { position:absolute; z-index:7; left:0; right:0; bottom:28%; height:12%; border-top:7px solid #161421; border-bottom:7px solid #161421; background:repeating-linear-gradient(90deg,transparent 0 38px,#161421 38px 44px); }
+.grave { position:absolute; z-index:20; bottom:20%; width:clamp(72px,10vw,105px); height:clamp(90px,14vw,140px); padding-top:1.8rem; text-align:center; border:2px solid #48515c; border-bottom:none; border-radius:45% 45% 8px 8px; background:linear-gradient(#59636b,#2c3339); color:#15191d; font-weight:900; box-shadow:inset 0 0 0 5px rgb(255 255 255 / 4%); cursor:pointer; }
+.grave::after { content:""; position:absolute; left:-18%; right:-18%; bottom:-10px; height:15px; background:#202820; border-radius:50%; }
+.grave i { position:absolute; left:50%; top:-10%; transform:translate(-50%,30px) scale(.4); opacity:0; font-style:normal; font-size:clamp(2.2rem,5vw,3.8rem); transition:opacity .3s ease, transform .3s ease; filter:drop-shadow(0 0 12px rgb(255 255 255 / 32%)); }
+.grave:hover i,.grave:focus-visible i { opacity:1; transform:translate(-50%,-58px) scale(1); }
+.grave-one{left:24%}.grave-two{left:47%;bottom:17%}.grave-three{right:19%}
+.couple { position:absolute; z-index:28; bottom:8%; left:-18%; display:flex; gap:.12rem; font-size:clamp(2.4rem,6vw,4.2rem); animation:couple-walk 20s linear infinite; }
+@keyframes couple-walk { to { left:110%; } }
+.grave-cat { position:absolute; z-index:29; bottom:6%; left:-10%; font-size:clamp(1.7rem,4vw,2.7rem); animation:grave-cat 20s .9s linear infinite; }
+@keyframes grave-cat { to { left:110%; } }
+.cyclist { position:absolute; z-index:12; bottom:32%; right:-12%; font-size:clamp(2rem,4vw,3rem); transform:scaleX(-1); animation:cycle-pass 14s 3s linear infinite; }
+@keyframes cycle-pass { to { right:110%; } }
+.orb { position:absolute; z-index:16; width:10px; aspect-ratio:1; border-radius:50%; background:#dfffee; box-shadow:0 0 15px #aaffd3; animation:orb-rise 6s ease-in-out infinite; }
+.orb1{left:35%;bottom:24%}.orb2{left:60%;bottom:20%;animation-delay:2s}.orb3{left:78%;bottom:28%;animation-delay:4s}
+@keyframes orb-rise { 50%{transform:translate(20px,-120px) scale(1.35);opacity:.35} }
+.grave-fog { position:absolute; z-index:35; bottom:0; width:62%; height:28%; border-radius:50%; background:rgb(196 218 220 / 10%); filter:blur(22px); }
+.gf1{left:-65%;animation:fog-drift 22s linear infinite}.gf2{left:-75%;animation:fog-drift 31s 8s linear infinite}
+
+/* ---------- Chapter III: Cursed Cove ---------- */
+.cove-stage { background: linear-gradient(#29102c 0 47%, #4b2030 47% 54%, #12313f 54% 73%, #6b4329 73%); }
+.sunset-moon { position:absolute; z-index:2; top:10%; right:12%; width:clamp(95px,14vw,150px); aspect-ratio:1; border-radius:50%; background:#ff9b54; box-shadow:0 0 45px rgb(255 117 24 / 40%); }
+.storm-cloud { position:absolute; z-index:8; width:260px; height:56px; border-radius:999px; background:#25192b; box-shadow:0 10px 20px rgb(0 0 0 / 18%); }
+.storm-cloud::before,.storm-cloud::after{content:"";position:absolute;border-radius:50%;background:inherit}.storm-cloud::before{width:95px;height:90px;left:35px;bottom:0}.storm-cloud::after{width:125px;height:75px;right:28px;bottom:0}
+.sc1{left:-280px;top:11%;animation:storm-drift 24s linear infinite}.sc2{left:-350px;top:28%;transform:scale(.72);animation:storm-drift 32s 7s linear infinite}
+@keyframes storm-drift { to { left:112%; } }
+.lightning { position:absolute; z-index:9; left:38%; top:18%; font-size:clamp(4rem,10vw,8rem); color:#fff6a0; opacity:0; filter:drop-shadow(0 0 12px #fff); animation:lightning-flash 7s steps(1,end) infinite; }
+@keyframes lightning-flash { 0%,86%,91%,100%{opacity:0} 87%,89%{opacity:1} 90%{opacity:.25} }
+.cove-bat { position:absolute; z-index:12; font-size:clamp(1.3rem,3vw,2.2rem); }
+.cb1{top:26%;left:-12%;animation:bat-flight 10s linear infinite}.cb2{top:35%;left:-18%;animation:bat-flight 13s 4s linear infinite}
+.ghost-ship { position:absolute; z-index:13; top:39%; left:-25%; display:flex; align-items:center; font-size:clamp(4rem,9vw,7rem); filter:grayscale(.7) drop-shadow(0 0 10px rgb(214 255 241 / 28%)); opacity:.72; animation:ship-sail 24s linear infinite; }
+.ghost-ship i{font-size:.38em;font-style:normal;margin-left:-.6em;animation:ghost-bob 2s ease-in-out infinite}
+@keyframes ship-sail { to { left:110%; } }
+@keyframes ghost-bob { 50% { transform:translateY(-12px); } }
+.ocean { position:absolute; z-index:15; left:0; right:0; bottom:27%; height:22%; overflow:hidden; background:linear-gradient(#17495a,#0a2936); }
+.wave { position:absolute; left:-10%; width:120%; height:48%; border-radius:50%; border-top:4px solid rgb(226 244 245 / 40%); }
+.wave1{top:8%;animation:wave-shift 4s ease-in-out infinite}.wave2{top:32%;animation:wave-shift 5s 1s ease-in-out infinite reverse}.wave3{top:62%;animation:wave-shift 6s 2s ease-in-out infinite}
+@keyframes wave-shift { 50% { transform:translateX(6%) translateY(8px) scaleY(1.1); } }
+.sand { position:absolute; z-index:17; left:0; right:0; bottom:0; height:29%; background:linear-gradient(#845434,#4b2e20); }
+.pirates { position:absolute; z-index:25; left:15%; bottom:13%; display:flex; gap:.2rem; font-size:clamp(2.8rem,7vw,5.2rem); animation:pirate-bob 3s ease-in-out infinite; }
+@keyframes pirate-bob { 50% { transform:translateY(-4px) rotate(-1deg); } }
+.bonfire { position:absolute; z-index:26; left:36%; bottom:12%; font-size:clamp(3rem,8vw,5.7rem); filter:drop-shadow(0 0 18px rgb(255 117 24 / 70%)); animation:fire-flicker .65s ease-in-out infinite alternate; }
+@keyframes fire-flicker { to { transform:scale(.92) rotate(2deg); filter:drop-shadow(0 0 28px rgb(255 214 10 / 75%)); } }
+.crab { position:absolute; z-index:26; bottom:7%; left:-10%; font-size:clamp(1.8rem,4vw,2.8rem); animation:crab-scuttle 10s linear infinite; }
+@keyframes crab-scuttle { 0%{left:-10%;transform:translateY(0) rotate(-4deg)} 25%{transform:translateY(-5px) rotate(4deg)} 100%{left:110%;transform:translateY(0) rotate(-4deg)} }
+.lantern { position:absolute; z-index:30; bottom:-15%; font-size:clamp(1.7rem,4vw,2.8rem); filter:drop-shadow(0 0 12px rgb(255 214 10 / 55%)); animation:lantern-rise 11s ease-in infinite; }
+.lantern1{left:58%}.lantern2{left:71%;animation-delay:3.6s}.lantern3{left:84%;animation-delay:7.2s}
+@keyframes lantern-rise { to { bottom:105%; transform:translateX(28px) rotate(12deg); opacity:.12; } }
+
+/* ---------- Navigation / footer ---------- */
+.chapter-actions { display:flex; justify-content:space-between; gap:1rem; padding:1.2rem clamp(1.2rem,3vw,2.2rem) 1.6rem; }
+.next-chapter,.back-chapter { display:inline-flex; align-items:center; gap:.55rem; margin:1.2rem clamp(1.2rem,3vw,2.2rem) 1.6rem; padding:.78rem 1rem; border-radius:.85rem; text-decoration:none; font-weight:850; transition:transform .2s ease, box-shadow .2s ease, background .2s ease; }
+.chapter-actions .next-chapter,.chapter-actions .back-chapter{margin:0}
+.next-chapter { background:linear-gradient(135deg,var(--pumpkin),#ff934d); color:#21101a; box-shadow:0 8px 20px rgb(255 117 24 / 18%); }
+.back-chapter { background:rgb(255 255 255 / 7%); border:1px solid rgb(255 255 255 / 12%); }
+.next-chapter:hover,.back-chapter:hover{transform:translateY(-2px)}
+.site-footer { width:min(1180px,calc(100% - 2rem)); margin:1.25rem auto 2.5rem; display:flex; justify-content:space-between; gap:1rem; color:#bfb4c9; font-size:.85rem; }
+.site-footer p{margin:0}
+
+/* ---------- Responsive layout ---------- */
+@media (max-width: 780px) {
+  .site-header { align-items:flex-start; flex-direction:column; }
+  .scene-nav { justify-content:flex-start; }
+  .stage { min-height:520px; }
+  .haunted-house { right:2%; width:180px; }
+  .grave-one{left:8%}.grave-two{left:39%}.grave-three{right:8%}
+  .pirates{left:8%}.bonfire{left:42%}
+  .site-footer { flex-direction:column; }
+}
+@media (max-width: 500px) {
+  .scenes,.site-header,.site-footer{width:min(100% - 1rem,1180px)}
+  .scene-nav a{font-size:.78rem;padding:.52rem .72rem}
+  .legend{gap:.35rem}.legend span{font-size:.73rem}
+  .stage{min-height:500px}
+  .haunted-house{width:145px;height:28%}
+  .town-silhouette{bottom:41%}.haunted-house{bottom:41%}
+  .walker{bottom:20%}.hearse{bottom:10%}.pumpkin{bottom:11%}
+  .lamp-right{right:34%}
+  .grave{width:68px;height:98px;font-size:.72rem}
+  .grave-one{left:5%}.grave-two{left:39%}.grave-three{right:5%}
+  .dead-tree.tree-right{right:4%}.dead-tree.tree-left{left:5%}
+  .chapter-actions{flex-direction:column}.chapter-actions a{justify-content:center}
+  .next-chapter:not(.chapter-actions .next-chapter){display:flex;justify-content:center}
+}
+
+/* ---------- Reduced motion accessibility ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior:auto; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+  .cloud-one,.cloud-two,.bat,.witch,.walker,.town-cat,.hearse,.candy,.fog,
+  .gc1,.gc2,.couple,.grave-cat,.cyclist,.gf1,.gf2,.sc1,.sc2,.cove-bat,.ghost-ship,.crab,.lantern { left:50% !important; }
+}

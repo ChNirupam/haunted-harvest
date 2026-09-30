@@ -1,0 +1,10 @@
+THE HAUNTED HARVEST — FINAL SUBMISSION CHECKLIST
+Nirupamarayudu Chitturi | 002931435
+
+Repository name:
+haunted-harvest
+
+GitHub URL
+https://github.com/ChNirupam/haunted-harvest
+
+CODD URLhttps://codd.cs.gsu.edu/~nchitturi1/inc06/

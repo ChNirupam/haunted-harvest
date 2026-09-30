@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The Haunted Harvest — a responsive, CSS-only animated Halloween environment by Nirupamarayudu Chitturi.">
+  <title>The Haunted Harvest | Nirupamarayudu Chitturi</title>
+  <link rel="stylesheet" href="haunted-harvest.css">
+</head>
+<body>
+  <a class="skip-link" href="#scene1">Skip to Halloween scenes</a>
+
+  <header class="site-header">
+    <div class="brand" aria-label="The Haunted Harvest">
+      <span class="brand-mark" aria-hidden="true">🎃</span>
+      <div>
+        <p class="eyebrow">CSS-only Halloween challenge</p>
+        <h1>The Haunted Harvest</h1>
+      </div>
+    </div>
+
+    <nav class="scene-nav" aria-label="Choose a Halloween chapter">
+      <a href="#scene1">Town Square</a>
+      <a href="#scene2">Graveyard</a>
+      <a href="#scene3">Cursed Cove</a>
+    </nav>
+  </header>
+
+  <main class="scenes" id="scenes">
+    <section class="scene scene-town" id="scene1" tabindex="-1" aria-labelledby="scene1-title">
+      <div class="scene-copy">
+        <p class="chapter">Chapter I</p>
+        <h2 id="scene1-title">Haunted Halloween Town Square</h2>
+        <p>Trick-or-treaters cross the square while bats circle the moon, fog rolls past the lamp posts, and a midnight hearse makes one very suspicious delivery.</p>
+        <div class="legend" aria-label="Scene features">
+          <span>🧛 Human activity</span><span>🦇 Animals</span><span>🌫️ Weather</span><span>🚗 Moving vehicle</span>
+        </div>
+      </div>
+
+      <div class="stage town-stage" role="img" aria-label="Animated Halloween town square with children, bats, cat, fog, pumpkins and a moving hearse">
+        <div class="sky-glow"></div>
+        <div class="moon" aria-hidden="true"><span></span><span></span><span></span></div>
+        <div class="cloud cloud-one" aria-hidden="true"></div>
+        <div class="cloud cloud-two" aria-hidden="true"></div>
+        <div class="bat bat-one" aria-hidden="true">🦇</div>
+        <div class="bat bat-two" aria-hidden="true">🦇</div>
+        <div class="witch" aria-hidden="true">🧙‍♀️</div>
+
+        <div class="town-silhouette" aria-hidden="true">
+          <div class="building b1"></div><div class="building b2"></div><div class="building b3"></div>
+          <div class="building b4"></div><div class="building b5"></div><div class="building b6"></div>
+        </div>
+
+        <div class="haunted-house" aria-hidden="true">
+          <div class="roof"></div><div class="window w1"></div><div class="window w2"></div><div class="window w3"></div>
+          <div class="door"></div>
+        </div>
+
+        <div class="lamp lamp-left" aria-hidden="true"><i></i></div>
+        <div class="lamp lamp-right" aria-hidden="true"><i></i></div>
+
+        <div class="pumpkin patch-p1" aria-hidden="true">🎃</div>
+        <div class="pumpkin patch-p2" aria-hidden="true">🎃</div>
+        <div class="pumpkin patch-p3" aria-hidden="true">🎃</div>
+
+        <div class="walker walker-one" aria-hidden="true"><span class="person">🧟</span><span class="bag">🍬</span></div>
+        <div class="walker walker-two" aria-hidden="true"><span class="person">🧛</span><span class="bag">🍫</span></div>
+        <div class="black-cat town-cat" aria-hidden="true">🐈‍⬛</div>
+        <div class="hearse" aria-hidden="true"><span>🚙</span><b>💨</b></div>
+        <div class="candy candy-one" aria-hidden="true">🍬</div><div class="candy candy-two" aria-hidden="true">🍁</div><div class="candy candy-three" aria-hidden="true">🍫</div>
+
+        <div class="fog fog-a" aria-hidden="true"></div><div class="fog fog-b" aria-hidden="true"></div><div class="fog fog-c" aria-hidden="true"></div>
+        <p class="stage-caption">Hover the pumpkins • Tab through the chapter buttons • 100% CSS animation</p>
+      </div>
+
+      <a class="next-chapter" href="#scene2">Continue to the graveyard <span aria-hidden="true">→</span></a>
+    </section>
+
+    <section class="scene scene-grave" id="scene2" tabindex="-1" aria-labelledby="scene2-title">
+      <div class="scene-copy">
+        <p class="chapter">Chapter II</p>
+        <h2 id="scene2-title">Midnight Graveyard Stroll</h2>
+        <p>A pair of brave visitors follows a moonlit path. An owl watches, a black cat trots behind, a cyclist passes beyond the fence, and curious ghosts answer anyone bold enough to inspect a gravestone.</p>
+        <div class="legend" aria-label="Interactive hint">
+          <span>👻 Hover gravestones</span><span>🐈‍⬛ Cat patrol</span><span>🌬️ Wind</span><span>🚲 Distant cyclist</span>
+        </div>
+      </div>
+
+      <div class="stage grave-stage" role="img" aria-label="Animated graveyard with walking visitors, black cat, owl, cyclist, fog, moon, trees and hover-revealed ghosts">
+        <div class="grave-moon" aria-hidden="true"></div>
+        <div class="grave-cloud gc1" aria-hidden="true"></div><div class="grave-cloud gc2" aria-hidden="true"></div>
+        <div class="dead-tree tree-left" aria-hidden="true"><i></i><b></b></div>
+        <div class="dead-tree tree-right" aria-hidden="true"><i></i><b></b></div>
+        <div class="owl" aria-hidden="true">🦉</div>
+        <div class="fence" aria-hidden="true"></div>
+
+        <div class="grave grave-one" tabindex="0" aria-label="Old gravestone. A ghost appears when hovered or focused."><span>RIP</span><i aria-hidden="true">👻</i></div>
+        <div class="grave grave-two" tabindex="0" aria-label="Cracked gravestone. A ghost appears when hovered or focused."><span>BOO</span><i aria-hidden="true">👻</i></div>
+        <div class="grave grave-three" tabindex="0" aria-label="Ancient gravestone. A ghost appears when hovered or focused."><span>RIP</span><i aria-hidden="true">👻</i></div>
+
+        <div class="couple" aria-hidden="true"><span>🧙</span><span>🧛‍♀️</span></div>
+        <div class="grave-cat" aria-hidden="true">🐈‍⬛</div>
+        <div class="cyclist" aria-hidden="true">🚲</div>
+        <div class="orb orb1" aria-hidden="true"></div><div class="orb orb2" aria-hidden="true"></div><div class="orb orb3" aria-hidden="true"></div>
+        <div class="grave-fog gf1" aria-hidden="true"></div><div class="grave-fog gf2" aria-hidden="true"></div>
+        <p class="stage-caption">Gravestones reveal spirits on hover or keyboard focus.</p>
+      </div>
+
+      <div class="chapter-actions">
+        <a class="back-chapter" href="#scene1"><span aria-hidden="true">←</span> Town Square</a>
+        <a class="next-chapter" href="#scene3">Sail to the cove <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <section class="scene scene-cove" id="scene3" tabindex="-1" aria-labelledby="scene3-title">
+      <div class="scene-copy">
+        <p class="chapter">Chapter III</p>
+        <h2 id="scene3-title">Cursed Beach Cove</h2>
+        <p>At the edge of town, skeleton pirates warm themselves by a haunted bonfire while a ghost ship crosses the horizon, waves pulse ashore, a crab scuttles past, and lanterns rise into the stormy sky.</p>
+        <div class="legend" aria-label="Scene features">
+          <span>🏴‍☠️ Pirate story</span><span>🦀 Wildlife</span><span>🌊 Moving waves</span><span>⛵ Ghost ship</span>
+        </div>
+      </div>
+
+      <div class="stage cove-stage" role="img" aria-label="Animated cursed cove with skeleton pirates, bonfire, ghost ship, waves, crab, flying bats and floating lanterns">
+        <div class="sunset-moon" aria-hidden="true"></div>
+        <div class="storm-cloud sc1" aria-hidden="true"></div><div class="storm-cloud sc2" aria-hidden="true"></div>
+        <div class="lightning bolt1" aria-hidden="true">ϟ</div>
+        <div class="cove-bat cb1" aria-hidden="true">🦇</div><div class="cove-bat cb2" aria-hidden="true">🦇</div>
+        <div class="ghost-ship" aria-hidden="true"><span>⛵</span><i>👻</i></div>
+
+        <div class="ocean" aria-hidden="true">
+          <div class="wave wave1"></div><div class="wave wave2"></div><div class="wave wave3"></div>
+        </div>
+
+        <div class="sand" aria-hidden="true"></div>
+        <div class="pirates" aria-hidden="true"><span>☠️</span><span>🏴‍☠️</span></div>
+        <div class="bonfire" aria-hidden="true"><span>🔥</span></div>
+        <div class="crab" aria-hidden="true">🦀</div>
+        <div class="lantern lantern1" aria-hidden="true">🎃</div><div class="lantern lantern2" aria-hidden="true">🏮</div><div class="lantern lantern3" aria-hidden="true">🎃</div>
+        <p class="stage-caption">A final CSS-only loop: waves, lightning, ship, wildlife and floating lanterns.</p>
+      </div>
+
+      <div class="chapter-actions">
+        <a class="back-chapter" href="#scene2"><span aria-hidden="true">←</span> Graveyard</a>
+        <a class="next-chapter" href="#scene1">Replay the night <span aria-hidden="true">↻</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p><strong>Nirupamarayudu Chitturi</strong> · Panther ID 002931435 · Graduate submission</p>
+    <p>HTML5 + CSS3 only. No JavaScript is used anywhere in this project.</p>
+  </footer>
+</body>
+</html>
